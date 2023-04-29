@@ -1,13 +1,88 @@
+import java.util.ArrayList;
+import java.util.*;
+import java.util.Random;
+
 public class enemy {
-    private entity[] party = new entity[4];
+    public entity[] enemyParty = new entity[4];
+    private int partySize;
+    Random rand = new Random();
+
+    private ArrayList<item> bag = new ArrayList<item>(List.of(new item(1)));
 
     public enemy()
-    {
-
+    {   
+        this.intilizeEnemy();
+        battle.currentEnemy = this;
+        battle.currentEnemyEntity = this.enemyParty[0];
     }
 
-    public void addPartyMember(String name, int level, int healthStat)
+    public void addPartyMember()
     {
-        party[party.length] = new entity(name, level, healthStat);
+        
+        for(int i = 0; i < 4; i++)
+        {
+            if(enemyParty[i] == null)
+            {
+                enemyParty[i] = entityID.Piss_Rat;
+                partySize = i;
+                break;
+            }
+        }
+    }
+
+    public entity getEnemyPartyMember(int index)
+    {
+        return enemyParty[index];
+    }
+
+    public void printParty()
+    {
+        for(int i = 0; i < partySize + 1; i++)
+        {
+            System.out.println(i + 1 + ". " + enemyParty[i].getName());
+        }
+    }
+
+    public item getBagContents(int index)
+    {
+        return bag.get(index);
+    }
+
+    public void useItem(item desiredItem)
+    {
+        for(int i = 0; i < bag.size(); i++)
+        {
+            if(bag.get(i).getID() == desiredItem.getID())
+            {
+                if(rand.nextBoolean() == true)
+                {
+                    itemIDs.normal_potion.affect();
+                    bag.remove(i);
+                }
+            }
+        }
+    }
+
+    public ArrayList<item> getBag()
+    {
+        return bag;
+    }
+
+    public entity[] getEnemyParty()
+    {
+        return this.enemyParty;
+    }
+
+    public void setEnemyParty(entity[] party)
+    {
+        this.enemyParty = party;
+    }
+
+    public void intilizeEnemy()
+    {
+        enemyParty[0] = entityID.Piss_Rat;
+        enemyParty[1] = entityID.Piss_Rat;
+        enemyParty[2] = entityID.Piss_Rat;
+        enemyParty[3] = entityID.Piss_Rat;
     }
 }
