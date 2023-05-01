@@ -100,7 +100,7 @@ public class entity {
 
         System.out.println(getName() + " used " + knownMoves[0].getName() + "!");
 
-        battle.getCurrentPlayerEntity().hp -= ((((((2 * this.level * rand.nextInt(3)) + 2) * chosenMove.getDamage() * this.attackStat/battle.getCurrentPlayerEntity().getDefenseStat()) / 50) + 2) * this.STAB);
+        battle.getCurrentPlayerEntity().hp -= Math.floor(((((((2 * this.level * rand.nextInt(3)) + 2) * chosenMove.getDamage() * this.attackStat/battle.getCurrentPlayerEntity().getDefenseStat()) / 50) + 2) * this.STAB));
         
         System.out.println(battle.getCurrentPlayerEntity().getName() + " took damage");
         

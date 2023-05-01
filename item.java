@@ -2,8 +2,8 @@
 public class item {
     
     private int id;
-
-    public item(int id)
+    private String name;
+    public item(int id, String name)
     {
         this.id = id;
     }
@@ -15,6 +15,10 @@ public class item {
     public void affect()
     {
         
+    }
+
+    public String getName() {
+        return name;
     }
 
     

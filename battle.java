@@ -35,11 +35,12 @@ public class battle {
 
     public static void whosTurn()
     {
-        if(turn % 2 != 0)
+        if(turn % 2 == 0)
         {
-            turnOrganizer.turnMenu();
-        } else {
             battleAI.ai();
+            
+        } else {
+            turnOrganizer.turnMenu();
         }
     }
 

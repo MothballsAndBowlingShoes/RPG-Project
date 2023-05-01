@@ -7,7 +7,7 @@ public class enemy {
     private int partySize;
     Random rand = new Random();
 
-    private ArrayList<item> bag = new ArrayList<item>(List.of(new item(1)));
+    private ArrayList<item> bag = new ArrayList<item>(List.of(itemIDs.normal_potion));
 
     public enemy()
     {   
@@ -56,7 +56,8 @@ public class enemy {
             {
                 if(rand.nextBoolean() == true)
                 {
-                    itemIDs.normal_potion.affect();
+                    System.out.println(battle.currentEnemyEntity.getName() + " used " + desiredItem.getName());
+                    desiredItem.affect();
                     bag.remove(i);
                 }
             }
@@ -84,5 +85,18 @@ public class enemy {
         enemyParty[1] = entityID.Piss_Rat;
         enemyParty[2] = entityID.Piss_Rat;
         enemyParty[3] = entityID.Piss_Rat;
+    }
+
+    public boolean checkBag()
+    {
+        for(int i = 0; i < battle.getCurrentEnemy().getBag().size(); i++)
+        {
+            if(battle.getCurrentEnemy().getBag().get(i).getID() == itemIDs.normal_potion.getID())
+            {
+                battle.currentEnemy.useItem(itemIDs.normal_potion);
+                return true;
+            }
+        }
+        return false;
     }
 }
