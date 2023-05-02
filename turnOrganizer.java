@@ -18,7 +18,9 @@ public class turnOrganizer {
 
         if(choice == 1)
         {
+            currentPlayerEntity.printKnownMoves();
             currentPlayerEntity.executeMove(battle.currentEnemyEntity);
+            
         } else if(choice == 2) {
             player.printBag();
             System.out.println("What item do you want to use?");

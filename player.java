@@ -11,13 +11,13 @@ public class player {
 
     }
 
-    public static void addPartyMember(String name, int level, int healthStat, type type, int hpStat, int attackStat, int defenseStat)
+    public static void addPartyMember(entity monster)
     {
         for(int i = 0; i < playerParty.length; i++)
         {
             if(playerParty[i] == null)
             {
-                playerParty[i] = new entity(name, level, type, hpStat, attackStat, defenseStat);
+                playerParty[i] = monster;
                 playerParty[i].addMoves(moveIDs.flamethrower);
                 partySize = i;
                 break;

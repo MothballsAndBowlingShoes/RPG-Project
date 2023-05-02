@@ -13,7 +13,7 @@ public class battle {
 
         currentPlayerEntity = player.getPartyMember(0);
 
-        turn = 1;
+        turn = 0;
         win = false;
         
         
@@ -22,11 +22,15 @@ public class battle {
             whosTurn();
             turn++;
 
-            if(enemyPlayer.enemyParty[0].getHP() <= 0)
+            if(currentPlayerEntity.getFainted() == true)
+            {
+                System.out.println("You lost!");
+                break;
+            } else if(currentEnemyEntity.getFainted() == true)
             {
                 win = true;
                 System.out.println("You Win");
-            }
+            } 
         }
 
 
@@ -37,10 +41,22 @@ public class battle {
     {
         if(turn % 2 == 0)
         {
-            battleAI.ai();
+
             
         } else {
             turnOrganizer.turnMenu();
+        }
+
+        if(currentEnemyEntity.getSpeedStat() >= getCurrentPlayerEntity().getSpeedStat())
+        {
+            battleAI.ai();
+            turnOrganizer.turnMenu();
+        } else if(currentEnemyEntity.getSpeedStat() <= getCurrentPlayerEntity().getSpeedStat()) {
+            turnOrganizer.turnMenu();
+            battleAI.ai();
+        } else {
+            turnOrganizer.turnMenu();
+            battleAI.ai();
         }
     }
 

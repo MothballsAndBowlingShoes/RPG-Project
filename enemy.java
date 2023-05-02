@@ -23,7 +23,7 @@ public class enemy {
         {
             if(enemyParty[i] == null)
             {
-                enemyParty[i] = entityID.Piss_Rat;
+                enemyParty[i] = entityID.gardevoir;
                 partySize = i;
                 break;
             }
@@ -81,10 +81,10 @@ public class enemy {
 
     public void intilizeEnemy()
     {
-        enemyParty[0] = entityID.Piss_Rat;
-        enemyParty[1] = entityID.Piss_Rat;
-        enemyParty[2] = entityID.Piss_Rat;
-        enemyParty[3] = entityID.Piss_Rat;
+        enemyParty[0] = entityID.zeus;
+        enemyParty[1] = entityID.zeus;
+        enemyParty[2] = entityID.zeus;
+        enemyParty[3] = entityID.zeus;
     }
 
     public boolean checkBag()
